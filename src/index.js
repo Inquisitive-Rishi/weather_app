@@ -1,8 +1,5 @@
+import './style.css';
 
-
-const h1 = document.createElement('h1')
-h1.textContent = 'Hello'
-document.body.appendChild(h1);
 
 // This is reference to access data in code:
 // {
