@@ -1,12 +1,11 @@
 import './style.css';
-import sunriseImg from './images/sunrise.png';
-import sunnyImg from './images/sunny.png';
-import nightImg from './images/night.png';
 
 const body = document.querySelector('body')
 const morningBtn = document.createElement('button')
 const dayBtn = document.createElement('button')
 const nightBtn = document.createElement('button')
+
+body.classList.add('img-fit')
 
 morningBtn.textContent = 'Show Sunrise'
 dayBtn.textContent = 'Show sunny day'
@@ -21,47 +20,21 @@ btns.forEach(btn => {
 btns.forEach(btn => {
     btn.addEventListener('click', () => {
         const img = body.getElementsByTagName('img')
-        if (img.length > 0) {
-            body.removeChild(img[0]);
-        }
-
         if (btn == morningBtn) {
-            const sunrise = new Image();
-            sunrise.src = sunriseImg;
-            body.appendChild(sunrise)
+            body.classList.remove('day')
+            body.classList.remove('night')
+            body.classList.add('morning')
         } else if (btn == dayBtn) {
-            const sunny = new Image();
-            sunny.src = sunnyImg;
-            body.appendChild(sunny)
+            body.classList.remove('morning')
+            body.classList.remove('night')
+            body.classList.add('day')
         } else {
-            const night = new Image()
-            night.src = nightImg;
-            body.appendChild(night)
+            body.classList.remove('morning')
+            body.classList.remove('day')
+            body.classList.add('night')
         }
     })
 })
-
-// btns.forEach(btn => {
-//     if (btn == morningBtn) {
-//         btn.addEventListener('click',() => {
-//             const sunrise = new Image();
-//             sunrise.src = sunriseImg;
-//             body.appendChild(sunrise)
-//         })
-//     } else if (btn == dayBtn) {
-//         btn.addEventListener('click', () => {
-//             const sunny = new Image();
-//             sunny.src = sunnyImg;
-//             body.appendChild(sunny)
-//         })
-//     } else {
-//         btn.addEventListener('click', () => {
-//             const night = new Image()
-//             night.src = nightImg;
-//             body.appendChild(night)
-//         })
-//     }
-// })
 
 
 
