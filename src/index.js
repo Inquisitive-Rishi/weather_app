@@ -19,7 +19,6 @@ let aqi = document.createElement('h4')
 let inputBox = document.createElement('div')
 let input = document.createElement('input')
 
-
 body.style.display = 'flex'
 body.style.flexDirection = 'column'
 body.style.justifyContent = 'center'
@@ -36,13 +35,8 @@ box.style.border = '2px solid black'
 box.style.color = 'black'
 body.appendChild(box)  
 
-
 searchBtn.style.borderLeft = '0px'
 locationAndTime.style.display = 'flex'
-locationName.textContent = 'Bhagalpur'
-region.textContent = 'Bihar,'
-country.textContent = 'India'
-time.textContent = '12:00'
 
 locationName.style.marginRight = 'auto'
 
@@ -55,9 +49,9 @@ regionBox.appendChild(region)
 regionBox.appendChild(country)
 box.appendChild(regionBox)
 
-condition.textContent = 'Cloudy'
-temp.textContent = '27°C / 21°F'
-aqi.textContent = 'AQI - 200'
+// condition.textContent = 'Cloudy'
+// temp.textContent = '27°C / 21°F'
+// aqi.textContent = 'AQI - 200'
 
 regionBox.style.marginBottom = '100px'
 
@@ -72,9 +66,6 @@ aqi.style.marginBottom = '10px'
 condition.style.marginRight = 'auto'
 condition.style.marginLeft = 'auto'
 
-
-
-
 inputBox.style.display = 'flex'
 inputBox.style.marginLeft = 'auto';
 inputBox.style.marginRight = 'auto';
@@ -86,7 +77,6 @@ searchBtn.style.display = 'flex';
 searchBtn.style.alignItems = 'center'
 searchBtn.style.backgroundColor = 'white'
 
-
 input.style.borderRight = '0px'
 searchBtn.style.borderLeft = '0px'
 
@@ -94,15 +84,37 @@ searchBtn.appendChild(search)
 inputBox.appendChild(input)
 inputBox.appendChild(searchBtn)
 
-
 const weatherData = [condition,temp,aqi,inputBox]
 
 weatherData.forEach(data => {
     box.appendChild(data)
 })
 
+const weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+// importing data:
+searchBtn.addEventListener('click', () => {
+    async function getWeatherData() {
+        try {
+            const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=c6c13948483247f5a7070500231011&q=${input.value}`, { mode: 'cors' })
+            const data = await response.json()
+            const dateObj = new Date(data.location.localtime)
+            console.log(dateObj);
+            console.log(dateObj.getUTCMonth());
+            console.log(dateObj.getMonth());  
+            console.log(dateObj.getDay());  
+            
+            locationName.textContent = data.location.name
+            region.textContent = data.location.region + ", ";
+            country.textContent = data.location.country
+            
 
-
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+    }
+    getWeatherData()
+})
 
 // btns.forEach(btn => {
 //     btn.addEventListener('click', () => {
