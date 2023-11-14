@@ -10,14 +10,15 @@ const searchBtn = document.createElement('button')
 const regionBox = document.createElement('div')
 const locationAndTime = document.createElement('div')
 let locationName = document.createElement('h1')
-let time = document.createElement('h1')
+let date = document.createElement('h1')
 let region = document.createElement('h3')
 let country = document.createElement('h3')
 let temp = document.createElement('h4')
 let condition = document.createElement('h1');
-let aqi = document.createElement('h4')
 let inputBox = document.createElement('div')
 let input = document.createElement('input')
+let time = document.createElement('h3')
+
 
 body.style.display = 'flex'
 body.style.flexDirection = 'column'
@@ -31,37 +32,33 @@ box.style.textAlign = 'left'
 box.style.padding = '20px'
 box.style.height = '500px'
 box.style.aspectRatio = 1.5
-box.style.border = '2px solid black'
 box.style.color = 'black'
+box.classList.add('glass')
+box.style.color = 'white'
 body.appendChild(box)  
 
 searchBtn.style.borderLeft = '0px'
 locationAndTime.style.display = 'flex'
 
 locationName.style.marginRight = 'auto'
+time.style.marginLeft = 'auto'
 
 regionBox.style.display = 'flex'
 locationAndTime.appendChild(locationName)
-locationAndTime.appendChild(time)
+locationAndTime.appendChild(date)
 
 box.appendChild(locationAndTime)
 regionBox.appendChild(region)
 regionBox.appendChild(country)
+regionBox.appendChild(time)
 box.appendChild(regionBox)
 
-// condition.textContent = 'Cloudy'
-// temp.textContent = '27°C / 21°F'
-// aqi.textContent = 'AQI - 200'
 
 regionBox.style.marginBottom = '100px'
 
 temp.style.fontSize = '3em'
 temp.style.marginLeft = 'auto'
 temp.style.marginRight = 'auto'
-
-aqi.style.marginRight = 'auto'
-aqi.style.marginLeft = 'auto'
-aqi.style.marginBottom = '10px'
 
 condition.style.marginRight = 'auto'
 condition.style.marginLeft = 'auto'
@@ -84,7 +81,7 @@ searchBtn.appendChild(search)
 inputBox.appendChild(input)
 inputBox.appendChild(searchBtn)
 
-const weatherData = [condition,temp,aqi,inputBox]
+const weatherData = [condition,temp,inputBox]
 
 weatherData.forEach(data => {
     box.appendChild(data)
@@ -101,15 +98,34 @@ searchBtn.addEventListener('click', () => {
             const dateObj = new Date(data.location.localtime)
             console.log(dateObj);
             console.log(`${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`);  
-            console.log();
+            console.log(data);
+            const Time24 = dateObj.getHours()
+            console.log(Time24);
             
+            // bg change:
+
+             if ((Time24 <= 10 && Time24 > 4) || (Time24 < 18 && Time24 >= 17)) {
+                body.classList.remove('day')
+                body.classList.remove('night')
+                body.classList.add('morning')
+            } else if (Time24 < 17 && Time24 > 10) {
+                body.classList.remove('morning')
+                body.classList.remove('night')
+                body.classList.add('day')
+            } else {
+                body.classList.remove('morning')
+                body.classList.remove('day')
+                body.classList.add('night')
+            }
+
             locationName.textContent = data.location.name
             region.textContent = data.location.region + ", ";
             country.textContent = data.location.country
-            time.textContent = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`
+            date.textContent = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`
             condition.textContent = data.current.condition.text;
             temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
-            aqi.textContent = '234';
+            time.textContent = `${dateObj.getHours()}:${dateObj.getMinutes()}`
+
 
         } catch (error) {
             console.log(`Error: ${error}`);
