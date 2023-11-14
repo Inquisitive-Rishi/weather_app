@@ -19,26 +19,44 @@ btns.forEach(btn => {
 })
 
 btns.forEach(btn => {
-    if (btn == morningBtn) {
-        btn.addEventListener('click',() => {
+    btn.addEventListener('click', () => {
+        if (btn == morningBtn) {
             const sunrise = new Image();
             sunrise.src = sunriseImg;
             body.appendChild(sunrise)
-        })
-    } else if (btn == dayBtn) {
-        btn.addEventListener('click', () => {
+        } else if (btn == dayBtn) {
             const sunny = new Image();
             sunny.src = sunnyImg;
             body.appendChild(sunny)
-        })
-    } else {
-        btn.addEventListener('click', () => {
+        } else {
             const night = new Image()
             night.src = nightImg;
             body.appendChild(night)
-        })
-    }
+        }
+    })
 })
+
+// btns.forEach(btn => {
+//     if (btn == morningBtn) {
+//         btn.addEventListener('click',() => {
+//             const sunrise = new Image();
+//             sunrise.src = sunriseImg;
+//             body.appendChild(sunrise)
+//         })
+//     } else if (btn == dayBtn) {
+//         btn.addEventListener('click', () => {
+//             const sunny = new Image();
+//             sunny.src = sunnyImg;
+//             body.appendChild(sunny)
+//         })
+//     } else {
+//         btn.addEventListener('click', () => {
+//             const night = new Image()
+//             night.src = nightImg;
+//             body.appendChild(night)
+//         })
+//     }
+// })
 
 
 
