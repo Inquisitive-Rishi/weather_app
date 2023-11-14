@@ -1,40 +1,93 @@
 import './style.css';
+import searchIcon from './images/search.png';
+
+const search = new Image()
+search.src = searchIcon;
 
 const body = document.querySelector('body')
-const morningBtn = document.createElement('button')
-const dayBtn = document.createElement('button')
-const nightBtn = document.createElement('button')
+// const morningBtn = document.createElement('button')
+// const dayBtn = document.createElement('button')  
+// const nightBtn = document.createElement('button')
 
+const box = document.createElement('div')
+let locationName = document.createElement('h3')
+let region = document.createElement('h3')
+let country = document.createElement('h3')
+let temp = document.createElement('p')
+let aqi = document.createElement('p')
+let inputBox = document.createElement('div')
+let input = document.createElement('input')
+let searchBtn = document.createElement('button')
+
+body.style.display = 'flex'
+body.style.flexDirection = 'column'
+body.style.justifyContent = 'center'
+body.style.alignItems = 'center'
 body.classList.add('img-fit')
 
-morningBtn.textContent = 'Show Sunrise'
-dayBtn.textContent = 'Show sunny day'
-nightBtn.textContent = 'Show night'
+box.style.display = 'flex'
+box.style.flexDirection = 'column'
+box.style.alignItems = 'center'
+box.style.padding = '20px'
+box.style.height = '500px'
+box.style.aspectRatio = 1.5
+box.style.border = '2px solid black'
+box.style.color = 'black'
+body.appendChild(box)  
 
-const btns = [morningBtn, dayBtn, nightBtn]
+locationName.textContent = 'Bhagalpur'
+region.textContent = 'Bihar'
+country.textContent = 'India'
 
-btns.forEach(btn => {
-    body.appendChild(btn);
+inputBox.style.display = 'flex'
+input.style.display = 'flex'
+search.style.height = '20px'
+search.style.aspectRatio = 1;  
+searchBtn.style.display = 'flex';
+searchBtn.style.alignItems = 'center'
+
+searchBtn.appendChild(search)
+inputBox.appendChild(input)
+inputBox.appendChild(searchBtn)
+
+
+
+
+const weatherData = [locationName,region,country,temp,aqi,inputBox]
+
+weatherData.forEach(data => {
+    box.appendChild(data)
 })
 
-btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const img = body.getElementsByTagName('img')
-        if (btn == morningBtn) {
-            body.classList.remove('day')
-            body.classList.remove('night')
-            body.classList.add('morning')
-        } else if (btn == dayBtn) {
-            body.classList.remove('morning')
-            body.classList.remove('night')
-            body.classList.add('day')
-        } else {
-            body.classList.remove('morning')
-            body.classList.remove('day')
-            body.classList.add('night')
-        }
-    })
-})
+// morningBtn.textContent = 'Show Sunrise'
+// dayBtn.textContent = 'Show sunny day'
+// nightBtn.textContent = 'Show night'
+
+// const btns = [morningBtn, dayBtn, nightBtn]
+
+// btns.forEach(btn => {
+//     body.appendChild(btn);
+// })
+
+// btns.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         const img = body.getElementsByTagName('img')
+//         if (btn == morningBtn) {
+//             body.classList.remove('day')
+//             body.classList.remove('night')
+//             body.classList.add('morning')
+//         } else if (btn == dayBtn) {
+//             body.classList.remove('morning')
+//             body.classList.remove('night')
+//             body.classList.add('day')
+//         } else {
+//             body.classList.remove('morning')
+//             body.classList.remove('day')
+//             body.classList.add('night')
+//         }
+//     })
+// })
+
 
 
 
