@@ -8,11 +8,14 @@ const body = document.querySelector('body')
 const box = document.createElement('div')
 const searchBtn = document.createElement('button')
 const regionBox = document.createElement('div')
+const locationAndTime = document.createElement('div')
 let locationName = document.createElement('h1')
+let time = document.createElement('h1')
 let region = document.createElement('h3')
 let country = document.createElement('h3')
-let temp = document.createElement('p')
-let aqi = document.createElement('p')
+let temp = document.createElement('h4')
+let condition = document.createElement('h1');
+let aqi = document.createElement('h4')
 let inputBox = document.createElement('div')
 let input = document.createElement('input')
 
@@ -33,16 +36,43 @@ box.style.border = '2px solid black'
 box.style.color = 'black'
 body.appendChild(box)  
 
+
+searchBtn.style.borderLeft = '0px'
+locationAndTime.style.display = 'flex'
 locationName.textContent = 'Bhagalpur'
 region.textContent = 'Bihar,'
 country.textContent = 'India'
+time.textContent = '12:00'
+
+locationName.style.marginRight = 'auto'
 
 regionBox.style.display = 'flex'
-box.appendChild(locationName)
+locationAndTime.appendChild(locationName)
+locationAndTime.appendChild(time)
 
+box.appendChild(locationAndTime)
 regionBox.appendChild(region)
 regionBox.appendChild(country)
 box.appendChild(regionBox)
+
+condition.textContent = 'Cloudy'
+temp.textContent = '27°C / 21°F'
+aqi.textContent = 'AQI - 200'
+
+regionBox.style.marginBottom = '100px'
+
+temp.style.fontSize = '3em'
+temp.style.marginLeft = 'auto'
+temp.style.marginRight = 'auto'
+
+aqi.style.marginRight = 'auto'
+aqi.style.marginLeft = 'auto'
+aqi.style.marginBottom = '10px'
+
+condition.style.marginRight = 'auto'
+condition.style.marginLeft = 'auto'
+
+
 
 
 inputBox.style.display = 'flex'
@@ -56,6 +86,7 @@ searchBtn.style.display = 'flex';
 searchBtn.style.alignItems = 'center'
 searchBtn.style.backgroundColor = 'white'
 
+
 input.style.borderRight = '0px'
 searchBtn.style.borderLeft = '0px'
 
@@ -64,7 +95,7 @@ inputBox.appendChild(input)
 inputBox.appendChild(searchBtn)
 
 
-const weatherData = [temp,aqi,inputBox]
+const weatherData = [condition,temp,aqi,inputBox]
 
 weatherData.forEach(data => {
     box.appendChild(data)
