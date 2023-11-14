@@ -90,7 +90,7 @@ weatherData.forEach(data => {
     box.appendChild(data)
 })
 
-const weeks = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 // importing data:
 searchBtn.addEventListener('click', () => {
@@ -100,14 +100,16 @@ searchBtn.addEventListener('click', () => {
             const data = await response.json()
             const dateObj = new Date(data.location.localtime)
             console.log(dateObj);
-            console.log(dateObj.getUTCMonth());
-            console.log(dateObj.getMonth());  
-            console.log(dateObj.getDay());  
+            console.log(`${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`);  
+            console.log();
             
             locationName.textContent = data.location.name
             region.textContent = data.location.region + ", ";
             country.textContent = data.location.country
-            
+            time.textContent = `${dateObj.getDate()} ${months[dateObj.getMonth()]} ${dateObj.getFullYear()}`
+            condition.textContent = data.current.condition.text;
+            temp.textContent = `${data.current.temp_c}°C / ${data.current.temp_f}°F`;
+            aqi.textContent = '234';
 
         } catch (error) {
             console.log(`Error: ${error}`);
