@@ -20,6 +20,11 @@ btns.forEach(btn => {
 
 btns.forEach(btn => {
     btn.addEventListener('click', () => {
+        const img = body.getElementsByTagName('img')
+        if (img.length > 0) {
+            body.removeChild(img[0]);
+        }
+
         if (btn == morningBtn) {
             const sunrise = new Image();
             sunrise.src = sunriseImg;
