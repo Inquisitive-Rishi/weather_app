@@ -1,0 +1,12 @@
+.morning {
+    background-image: url(./images/sunrise.png);
+}
+
+.day {
+    background-image: url(./images/sunny.png);
+}
+
+.night {
+    background-image: url(./images/night.png);
+}
+

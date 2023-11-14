@@ -1,4 +1,47 @@
 import './style.css';
+import sunriseImg from './images/sunrise.png';
+import sunnyImg from './images/sunny.png';
+import nightImg from './images/night.png';
+
+const body = document.querySelector('body')
+const morningBtn = document.createElement('button')
+const dayBtn = document.createElement('button')
+const nightBtn = document.createElement('button')
+
+morningBtn.textContent = 'Show Sunrise'
+dayBtn.textContent = 'Show sunny day'
+nightBtn.textContent = 'Show night'
+
+const btns = [morningBtn, dayBtn, nightBtn]
+
+btns.forEach(btn => {
+    body.appendChild(btn);
+})
+
+btns.forEach(btn => {
+    if (btn == morningBtn) {
+        btn.addEventListener('click',() => {
+            const sunrise = new Image();
+            sunrise.src = sunriseImg;
+            body.appendChild(sunrise)
+        })
+    } else if (btn == dayBtn) {
+        btn.addEventListener('click', () => {
+            const sunny = new Image();
+            sunny.src = sunnyImg;
+            body.appendChild(sunny)
+        })
+    } else {
+        btn.addEventListener('click', () => {
+            const night = new Image()
+            night.src = nightImg;
+            body.appendChild(night)
+        })
+    }
+})
+
+
+
 
 
 // This is reference to access data in code:
