@@ -1,23 +1,21 @@
 import './style.css';
-import searchIcon from './images/search.png';
+import searchIcon from './images/search.svg';
 
 const search = new Image()
 search.src = searchIcon;
 
 const body = document.querySelector('body')
-// const morningBtn = document.createElement('button')
-// const dayBtn = document.createElement('button')  
-// const nightBtn = document.createElement('button')
-
 const box = document.createElement('div')
-let locationName = document.createElement('h3')
+const searchBtn = document.createElement('button')
+const regionBox = document.createElement('div')
+let locationName = document.createElement('h1')
 let region = document.createElement('h3')
 let country = document.createElement('h3')
 let temp = document.createElement('p')
 let aqi = document.createElement('p')
 let inputBox = document.createElement('div')
 let input = document.createElement('input')
-let searchBtn = document.createElement('button')
+
 
 body.style.display = 'flex'
 body.style.flexDirection = 'column'
@@ -27,7 +25,7 @@ body.classList.add('img-fit')
 
 box.style.display = 'flex'
 box.style.flexDirection = 'column'
-box.style.alignItems = 'center'
+box.style.textAlign = 'left'
 box.style.padding = '20px'
 box.style.height = '500px'
 box.style.aspectRatio = 1.5
@@ -36,38 +34,44 @@ box.style.color = 'black'
 body.appendChild(box)  
 
 locationName.textContent = 'Bhagalpur'
-region.textContent = 'Bihar'
+region.textContent = 'Bihar,'
 country.textContent = 'India'
 
+regionBox.style.display = 'flex'
+box.appendChild(locationName)
+
+regionBox.appendChild(region)
+regionBox.appendChild(country)
+box.appendChild(regionBox)
+
+
 inputBox.style.display = 'flex'
+inputBox.style.marginLeft = 'auto';
+inputBox.style.marginRight = 'auto';
 input.style.display = 'flex'
+input.style.padding = '5px'
 search.style.height = '20px'
 search.style.aspectRatio = 1;  
 searchBtn.style.display = 'flex';
 searchBtn.style.alignItems = 'center'
+searchBtn.style.backgroundColor = 'white'
+
+input.style.borderRight = '0px'
+searchBtn.style.borderLeft = '0px'
 
 searchBtn.appendChild(search)
 inputBox.appendChild(input)
 inputBox.appendChild(searchBtn)
 
 
-
-
-const weatherData = [locationName,region,country,temp,aqi,inputBox]
+const weatherData = [temp,aqi,inputBox]
 
 weatherData.forEach(data => {
     box.appendChild(data)
 })
 
-// morningBtn.textContent = 'Show Sunrise'
-// dayBtn.textContent = 'Show sunny day'
-// nightBtn.textContent = 'Show night'
 
-// const btns = [morningBtn, dayBtn, nightBtn]
 
-// btns.forEach(btn => {
-//     body.appendChild(btn);
-// })
 
 // btns.forEach(btn => {
 //     btn.addEventListener('click', () => {
